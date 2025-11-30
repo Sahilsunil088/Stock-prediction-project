@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prediction - Analysis</title>
+    <link rel="stylesheet" href="predict-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-content">
+            <a href="/" class="logo">📈 Stock Predictor</a>
+            <a href="/" class="back-btn">← Back to Stocks</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="loading" class="loading" style="display: block;">
+            <div class="spinner"></div>
+            <p>Fetching 10 years of data and training AI model...</p>
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div id="results" style="display: none;">
+            <div class="stock-header">
+                <div class="stock-title">
+                    <h1 id="stockName">-</h1>
+                    <span class="stock-ticker" id="stockTicker">-</span>
+                </div>
+                <div class="data-info">
+                    <span id="dataRange">-</span>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Current Price</div>
+                    <div class="metric-value" id="currentPrice">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Predicted Price</div>
+                    <div class="metric-value" id="predictedPrice">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Expected Change</div>
+                    <div class="metric-value" id="priceChange">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Prediction Period</div>
+                    <div class="metric-value" id="predictionDays">-</div>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <h2>Price Prediction Chart</h2>
+                <div class="chart-container">
+                    <canvas id="stockChart"></canvas>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <strong>⚠️ Disclaimer:</strong> This prediction is for educational purposes only and should not be considered as financial advice. 
+                Stock market investments are subject to market risks. Past performance does not guarantee future results.
+            </div>
+        </div>
+    </div>
+
+    <script src="predict-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Predictor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📈 Stock Price Predictor</h1>
+            <p>AI-powered predictions based on 10 years of historical data</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="🔍 Search stocks by name or symbol...">
+            </div>
+            <div class="prediction-controls">
+                <label for="daysAhead">Days to Predict:</label>
+                <input type="number" id="daysAhead" value="30" min="1" max="365">
+            </div>
+        </div>
+
+        <div class="stocks-container">
+            <h3>Select a Stock to Predict</h3>
+            <div id="stocksList" class="stocks-list">
+                <p>Loading stocks...</p>
+            </div>
+        </div>
+        
+        <div id="stockInfo" style="display: none; margin-bottom: 20px; padding: 15px; background: #f5f5f5; border-radius: 8px;">
+            <p><strong>Stock:</strong> <span id="stockName"></span></p>
+            <p><strong>Symbol:</strong> <span id="stockSymbol"></span></p>
+            <p><strong>Historical Data:</strong> <span id="dataRange"></span></p>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Training model and generating predictions...</p>
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div id="results" style="display: none;">
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>Current Price</h3>
+                    <p id="currentPrice">-</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Predicted Price</h3>
+                    <p id="predictedPrice">-</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Change</h3>
+                    <p id="priceChange">-</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="stockChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
