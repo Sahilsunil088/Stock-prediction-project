@@ -231,7 +231,11 @@ body {
 
 .chart-container {
     position: relative;
-    height: 500px;
+    height: 550px;
+    background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
 }
 
 /* Disclaimer */
