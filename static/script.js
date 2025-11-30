@@ -18,24 +18,31 @@ async function loadStocks() {
 // Display stocks list
 function displayStocksList(stocksToDisplay) {
     const stocksList = document.getElementById('stocksList');
+    const stockCount = document.getElementById('stockCount');
     
     if (stocksToDisplay.length === 0) {
-        stocksList.innerHTML = '<p class="no-results">No stocks found</p>';
+        stocksList.innerHTML = '<p class="no-results">No stocks found matching your search</p>';
+        stockCount.textContent = '0 Stocks';
         return;
     }
     
+    stockCount.textContent = `${stocksToDisplay.length} Stocks`;
+    
     stocksList.innerHTML = stocksToDisplay.map((stock, index) => `
-        <div class="stock-item" data-symbol="${stock.symbol}" onclick="selectStock('${stock.symbol}', '${stock.name}', '${stock.ticker}')">
-            <span class="stock-number">${index + 1}.</span>
+        <div class="stock-card" data-symbol="${stock.symbol}" onclick="selectStock('${stock.symbol}', '${stock.name}', '${stock.ticker}')">
+            <span class="stock-number">${index + 1}</span>
             <div class="stock-logo">
                 <img src="https://logo.clearbit.com/${getCompanyDomain(stock.name)}" 
                      alt="${stock.name}" 
-                     onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(stock.name)}&background=667eea&color=fff&size=48'">
+                     onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(stock.name)}&background=2563eb&color=fff&size=56'">
             </div>
-            <div class="stock-info">
+            <div class="stock-details">
                 <div class="stock-name">${stock.name}</div>
-                <div class="stock-symbol">${stock.ticker || stock.symbol}</div>
+                <div class="stock-ticker">${stock.ticker || stock.symbol}</div>
             </div>
+            <svg class="stock-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
         </div>
     `).join('');
 }
